@@ -1,15 +1,14 @@
 ﻿using System;
-using System.IO;
-using System.Xml.Serialization;
+using XmlSerialization;
 
-namespace TestApp
+namespace ReadXml
 {
     class Program
     {
         public static void Main()
         {
             // Read and write purchase orders.
-            TestXML.Test t = new TestXML.Test();
+            XMLGenerate t = new XMLGenerate();
             
             t.CreatePO("po.xml");
             t.ReadPO("po.xml");

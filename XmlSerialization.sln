@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestXML", "TestXML\TestXML.csproj", "{52C71E25-1583-45D3-8732-AEA79730982A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlSerialization", "TestXML\XmlSerialization.csproj", "{52C71E25-1583-45D3-8732-AEA79730982A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "TestApp\TestApp.csproj", "{7986D2CA-2C61-478A-BFBA-B504F96A69C9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadXml", "TestApp\ReadXml.csproj", "{7986D2CA-2C61-478A-BFBA-B504F96A69C9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

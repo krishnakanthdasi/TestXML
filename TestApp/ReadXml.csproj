@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TestXML\TestXML.csproj" />
+    <ProjectReference Include="..\TestXML\XmlSerialization.csproj" />
   </ItemGroup>
 
 </Project>

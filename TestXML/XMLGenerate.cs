@@ -2,9 +2,9 @@
 using System.IO;
 using System.Xml.Serialization;
 
-namespace TestXML
+namespace XmlSerialization
 {
-   public class Test
+   public class XMLGenerate
     {
         public void CreatePO(string filename)
         {
