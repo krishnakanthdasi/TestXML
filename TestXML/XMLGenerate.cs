@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 
 namespace XmlSerialization
 {
-   public class XMLGenerate
+    public class XMLGenerate
     {
         public void CreatePO(string filename)
         {
@@ -63,36 +63,40 @@ namespace XmlSerialization
             XmlNodeEventHandler(serializer_UnknownNode);
             serializer.UnknownAttribute += new
             XmlAttributeEventHandler(serializer_UnknownAttribute);
-
-            // A FileStream is needed to read the XML document.
-            FileStream fs = new FileStream(filename, FileMode.Open);
-            // Declare an object variable of the type to be deserialized.
-            PurchaseOrder po;
-            /* Use the Deserialize method to restore the object's state with
-            data from the XML document. */
-            po = (PurchaseOrder)serializer.Deserialize(fs);
-            // Read the order date.
-            Console.WriteLine("OrderDate: " + po.OrderDate);
-
-            // Read the shipping address.
-            Address shipTo = po.ShipTo;
-            ReadAddress(shipTo, "Ship To:");
-            // Read the list of ordered items.
-            OrderedItem[] items = po.OrderedItems;
-            Console.WriteLine("Items to be shipped:");
-            foreach (OrderedItem oi in items)
+            using (FileStream fs = File.Open(filename, FileMode.Open))
             {
-                Console.WriteLine("\t" +
-                oi.ItemName + "\t" +
-                oi.Description + "\t" +
-                oi.UnitPrice + "\t" +
-                oi.Quantity + "\t" +
-                oi.LineTotal);
+                PurchaseOrder po;
+                /* Use the Deserialize method to restore the object's state with
+                data from the XML document. */
+                po = (PurchaseOrder)serializer.Deserialize(fs);
+                // A FileStream is needed to read the XML document.
+                // FileStream fs = new FileStream(filename, FileMode.Open);
+                // Declare an object variable of the type to be deserialized.
+
+                // Read the order date.
+                Console.WriteLine("OrderDate: " + po.OrderDate);
+
+                // Read the shipping address.
+                Address shipTo = po.ShipTo;
+                ReadAddress(shipTo, "Ship To:");
+                // Read the list of ordered items.
+                OrderedItem[] items = po.OrderedItems;
+                Console.WriteLine("Items to be shipped:");
+                foreach (OrderedItem oi in items)
+                {
+                    Console.WriteLine("\t" +
+                    oi.ItemName + "\t" +
+                    oi.Description + "\t" +
+                    oi.UnitPrice + "\t" +
+                    oi.Quantity + "\t" +
+                    oi.LineTotal);
+                }
+                // Read the subtotal, shipping cost, and total cost.
+                Console.WriteLine("\t\t\t\t\t Subtotal\t" + po.SubTotal);
+                Console.WriteLine("\t\t\t\t\t Shipping\t" + po.ShipCost);
+                Console.WriteLine("\t\t\t\t\t Total\t\t" + po.TotalCost);
             }
-            // Read the subtotal, shipping cost, and total cost.
-            Console.WriteLine("\t\t\t\t\t Subtotal\t" + po.SubTotal);
-            Console.WriteLine("\t\t\t\t\t Shipping\t" + po.ShipCost);
-            Console.WriteLine("\t\t\t\t\t Total\t\t" + po.TotalCost);
+            
         }
 
         protected void ReadAddress(Address a, string label)

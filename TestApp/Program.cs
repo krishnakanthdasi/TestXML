@@ -12,6 +12,8 @@ namespace ReadXml
             
             t.CreatePO("po.xml");
             t.ReadPO("po.xml");
+            t.CreatePO("po.xml");
+            t.ReadPO("po.xml");
             Console.ReadLine();
 
         }
